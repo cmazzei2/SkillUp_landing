@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SkillUp – Plataforma de Simulación Empresarial</title>
-  <meta name="description" content="SkillUp ayuda a universidades a llevar la enseñanza de gestión a la práctica mediante simulaciones interactivas y gamificadas.">
+  <meta name="description" content="SkillUp ayuda a universidades a llevar la enseñanza de la gestión a la práctica mediante simulaciones interactivas y gamificadas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -54,8 +54,8 @@
       .hero-image{flex:1}
     }
 
-    /* Video */
-    .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:var(--gris);margin-top:1.5rem}
+    /* Video más pequeño */
+    .video-wrapper{position:relative;padding-bottom:45%;max-width:700px;margin:1.5rem auto 0;border-radius:8px;overflow:hidden;background:var(--gris)}
     .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
     /* Platform */
@@ -68,13 +68,23 @@
     .services-alt h2{margin-bottom:2.5rem}
     .service-alt{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
     .service-alt:nth-child(even){flex-direction:row-reverse}
-    .service-alt img{border-radius:8px;flex:1 1 280px;min-width:280px}
+    .service-alt img{border-radius:8px;flex:1 1 260px;min-width:260px;max-height:180px;object-fit:cover}
     .service-alt div{flex:1 1 300px}
     .service-alt h3{font-size:1.25rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
     .service-alt h3 i{color:var(--naranja)}
     @media (max-width:600px){
       .service-alt,.service-alt:nth-child(even){flex-direction:column;text-align:center}
     }
+
+    /* Success Story */
+    .story{background:var(--blanco);border:1px solid #e5e5e5;border-radius:8px;padding:1.5rem;margin:2rem auto;max-width:850px}
+    .story-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+    .story-header img{width:90px;border-radius:6px;object-fit:contain}
+    .story-header div h3{font-size:1.1rem;color:var(--naranja)}
+    .story-content{display:none;margin-top:1rem}
+    .story-content.active{display:block}
+    .btn-ver{background:var(--azul);color:var(--blanco);font-size:.9rem;padding:.5rem 1rem;border-radius:4px}
+    .btn-ver:hover{background:var(--naranja)}
 
     /* Testimonials */
     .testimonial-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax 280px,1fr));gap:1.5rem;margin-top:1.5rem}
@@ -83,17 +93,41 @@
     .testimonial-card p{color:#333;font-size:.95rem}
     .testimonial-card strong{font-size:1.1rem;color:var(--azul)}
 
-    /* Plans */
-    .plan-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax 260px,1fr));gap:1.5rem;margin-top:1.5rem}
-    .plan-card{background:var(--blanco);border:2px solid #e5e5e5;border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;gap:1rem}
-    .plan-card h3{font-size:1.2rem;margin-bottom:.5rem}
-    .plan-card ul{margin-left:1.2rem;font-size:.95rem;color:#444}
-    .plan-card li{margin-bottom:.4rem}
+    /* PLANES VERTICALES + MÁS DISEÑO */
+    .planes-vertical{background:var(--gris)}
+    .planes-vertical h2{margin-bottom:2.5rem}
+    .plan-v{
+      display:grid;
+      grid-template-columns:260px 1fr auto;
+      gap:2rem;
+      align-items:center;
+      background:var(--blanco);
+      border-radius:12px;
+      padding:2rem;
+      margin:0 auto 2rem;
+      max-width:900px;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
+      transition:transform .3s, box-shadow .3s;
+      border:2px solid transparent;
+    }
+    .plan-v:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+    .plan-v.premium{border-color:var(--naranja)}
+    .plan-v .plan-badge{
+      display:flex;flex-direction:column;align-items:center;gap:.5rem;
+    }
+    .plan-v .plan-badge i{font-size:2.2rem;color:var(--naranja)}
+    .plan-v .plan-badge h3{font-size:1.4rem;text-align:center}
+    .plan-v ul{margin:0;padding-left:1.2rem;font-size:.95rem;color:#444}
+    .plan-v li{margin-bottom:.4rem}
+    .plan-v .plan-cta{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+    .plan-v .plan-cta button{min-width:160px}
+    .plan-v .plan-cta small{color:#777;font-size:.8rem}
+    @media (max-width:700px){
+      .plan-v{grid-template-columns:1fr;text-align:center}
+      .plan-v .plan-cta{margin-top:1rem}
+    }
 
-    /* Clients */
-    .clients-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin-top:1.5rem;align-items:center}
-    .clients-logos img{height:40px;filter:grayscale(100%);opacity:.75;transition:opacity .3s}
-    .clients-logos img:hover{opacity:1}
+    /* Clients (eliminada sección) */
 
     /* FAQ Dinámico */
     .faq-list{max-width:800px;margin:0 auto}
@@ -136,6 +170,7 @@
       <li><a href="#home">Inicio</a></li>
       <li><a href="#platform">Plataforma</a></li>
       <li><a href="#por-que-skillup">¿Por qué SkillUp?</a></li>
+      <li><a href="#caso-uca">Caso de Éxito</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
       <li><a href="#planes">Planes</a></li>
       <li><a href="#faq">Preguntas</a></li>
@@ -157,13 +192,13 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="https://placehold.co/600x400/1B2941/ffffff?text=Estudiantes+colaborando" alt="Estudiantes colaborando en un entorno tecnológico">
+        <img src="https://placehold.co/500x300/1B2941/ffffff?text=Estudiantes+colaborando" alt="Estudiantes colaborando en un entorno tecnológico">
       </div>
     </div>
   </div>
 </section>
 
-<!-- Video -->
+<!-- Video más pequeño -->
 <section id="video" class="text-center container">
   <h2>Descubre SkillUp en acción.</h2>
   <div class="video-wrapper">
@@ -192,7 +227,7 @@
     <h2 class="text-center">¿Por qué elegir SkillUp?</h2>
 
     <div class="service-alt">
-      <img src="https://placehold.co/500x300/C8F408/1B2941?text=Interactivo" alt="Aprendizaje interactivo">
+      <img src="https://placehold.co/450x280/C8F408/1B2941?text=Interactivo" alt="Aprendizaje interactivo">
       <div>
         <h3><i class="fas fa-bolt"></i> Aprendizaje 100% interactivo</h3>
         <p>Los alumnos reciben retroalimentación inmediata y viven la toma de decisiones en tiempo real, como en el mundo real.</p>
@@ -200,7 +235,7 @@
     </div>
 
     <div class="service-alt">
-      <img src="https://placehold.co/500x300/C8F408/1B2941?text=Analytics" alt="Analytics">
+      <img src="https://placehold.co/450x280/C8F408/1B2941?text=Analytics" alt="Analytics">
       <div>
         <h3><i class="fas fa-chart-line"></i> Analytics potentes para docentes</h3>
         <p>Dashboards en vivo con KPIs de trabajo en equipo, resolución de problemas, empleabilidad y más. Exporta informes para acreditación.</p>
@@ -208,7 +243,7 @@
     </div>
 
     <div class="service-alt">
-      <img src="https://placehold.co/500x300/C8F408/1B2941?text=Gamificación" alt="Gamificación">
+      <img src="https://placehold.co/450x280/C8F408/1B2941?text=Gamificación" alt="Gamificación">
       <div>
         <h3><i class="fas fa-trophy"></i> Gamificación que engancha</h3>
         <p>Rankings, eventos aleatorios, misiones y recompensas. El 90% de los estudiantes completa la simulación sin abandono.</p>
@@ -216,10 +251,33 @@
     </div>
 
     <div class="service-alt">
-      <img src="https://placehold.co/500x300/C8F408/1B2941?text=Personalizable" alt="Personalizable">
+      <img src="https://placehold.co/450x280/C8F408/1B2941?text=Personalizable" alt="Personalizable">
       <div>
         <h3><i class="fas fa-sliders-h"></i> Escenarios a tu medida</h3>
         <p>Selecciona industria, duración, niveles de dificultad y competencias a evaluar. Integra tu propio contenido y casos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Caso de Éxito UCA -->
+<section id="caso-uca">
+  <div class="container">
+    <h2 class="text-center">Caso de Éxito</h2>
+    <div class="story">
+      <div class="story-header">
+        <img src="https://placehold.co/90x90/1B2941/ffffff?text=UCA" alt="Logo UCA">
+        <div>
+          <h3>Universidad Católica Argentina (UCA)</h3>
+          <p>Transforming Interdisciplinary Learning with SkillUp</p>
+        </div>
+        <button class="btn-ver" onclick="toggleStory()">Ver caso completo</button>
+      </div>
+      <div id="story-content" class="story-content">
+        <p><strong>Antes de SkillUp:</strong> Los estudiantes tenían sólidos conocimientos teóricos, pero pocas oportunidades de aplicarlos en contextos reales. La colaboración entre facultades (Negocios, Ingeniería, Derecho, Comunicación) era casi nula y los simuladores existentes estaban desactualizados, eran difíciles de instalar y no permitían trabajo interdisciplinario.</p>
+        <p><strong>La solución:</strong> En solo una hora de onboarding, profesores de la UCA lanzaron un taller piloto con 60 alumnos de distintas carreras. SkillUp, 100% en la nube, permitió que cada estudiante asumiera un rol (Finanzas, Marketing, Operaciones, RRHH) y tomara decisiones en tiempo real dentro de una misma empresa virtual.</p>
+        <p><strong>Resultados inmediatos:</strong> Por primera vez los alumnos dialogaron como equipos multifuncionales, razonaron con datos y defendieron sus propuestas igual que en una empresa real. Los docentes valoraron los dashboards de analytics para calificar proceso, no solo resultados. El 97% de los participantes completó la simulación y la satisfacción del profesorado superó el 90%.</p>
+        <p><strong>Próximos pasos:</strong> La UCA integrará SkillUp en asignaturas transversales y programas de emprendimiento, utilizando los informes de impacto para acreditación y mejorar la empleabilidad de sus egresados.</p>
       </div>
     </div>
   </div>
@@ -246,13 +304,18 @@
   </div>
 </section>
 
-<!-- Planes -->
-<section id="planes">
+<!-- PLANES VERTICALES -->
+<section id="planes" class="planes-vertical">
   <div class="container">
-    <h2 class="text-center">Planes y funcionalidades.</h2>
-    <div class="plan-cards">
-      <div class="plan-card">
+    <h2 class="text-center">Planes y funcionalidades</h2>
+
+    <!-- Starter -->
+    <div class="plan-v">
+      <div class="plan-badge">
+        <i class="fas fa-rocket"></i>
         <h3>Starter Plan</h3>
+      </div>
+      <div>
         <ul>
           <li>1 simulación core (ej. retail)</li>
           <li>Roles por facultad (hasta 3)</li>
@@ -260,8 +323,19 @@
           <li>Soporte por email</li>
         </ul>
       </div>
-      <div class="plan-card" style="border-color:var(--naranja)">
+      <div class="plan-cta">
+        <button onclick="window.location='#contacto'">Solicitar info</button>
+        <small>Sin costo de implementación</small>
+      </div>
+    </div>
+
+    <!-- Premium -->
+    <div class="plan-v premium">
+      <div class="plan-badge">
+        <i class="fas fa-star"></i>
         <h3>Premium Plan</h3>
+      </div>
+      <div>
         <ul>
           <li>Escenarios ilimitados</li>
           <li>Analytics avanzados (KPIs, empleabilidad)</li>
@@ -269,8 +343,19 @@
           <li>Soporte prioritario + onboarding docente</li>
         </ul>
       </div>
-      <div class="plan-card">
+      <div class="plan-cta">
+        <button onclick="window.location='#contacto'">Solicitar info</button>
+        <small>Onboarding incluido</small>
+      </div>
+    </div>
+
+    <!-- Institutional -->
+    <div class="plan-v">
+      <div class="plan-badge">
+        <i class="fas fa-building"></i>
         <h3>Institutional Plan</h3>
+      </div>
+      <div>
         <ul>
           <li>Licencias ilimitadas institucionales</li>
           <li>Integración con LMS</li>
@@ -278,22 +363,12 @@
           <li>Formación docente onsite/virtual</li>
         </ul>
       </div>
-    </div>
-    <div class="text-center" style="margin-top:2rem">
-      <button onclick="window.location='#contacto'">Contacta por más info</button>
+      <div class="plan-cta">
+        <button onclick="window.location='#contacto'">Contactar equipo</button>
+        <small>Manager asignado 24/7</small>
+      </div>
     </div>
   </div>
-</section>
-
-<!-- Clients -->
-<section id="clients" class="container text-center">
-  <h2>Universidades que confían en SkillUp.</h2>
-  <div class="clients-logos">
-    <img src="https://placehold.co/140x50/1B2941/ffffff?text=UTDT" alt="UTDT">
-    <img src="https://placehold.co/140x50/1B2941/ffffff?text=UADE" alt="UADE">
-    <img src="https://placehold.co/140x50/1B2941/ffffff?text=UCEMA" alt="UCEMA">
-  </div>
-  <p style="margin-top:1rem;font-weight:600">95% satisfacción · 30% mejora de competencias · 90% finalización</p>
 </section>
 
 <!-- FAQ dinámico -->
@@ -395,6 +470,14 @@
       }
     });
   });
+
+  // Toggle caso UCA
+  function toggleStory() {
+    const content = document.getElementById('story-content');
+    content.classList.toggle('active');
+    const btn = document.querySelector('.btn-ver');
+    btn.textContent = content.classList.contains('active') ? 'Ocultar caso' : 'Ver caso completo';
+  }
 </script>
 </body>
 </html>
